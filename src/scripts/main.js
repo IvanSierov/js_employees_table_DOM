@@ -82,6 +82,24 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
+  if (position.length === 0) {
+    showNotification('Error', 'Position is required', 'error');
+
+    return;
+  }
+
+  if (!office) {
+    showNotification('Error', 'Office is required', 'error');
+
+    return;
+  }
+
+  if (salary <= 0 || isNaN(salary)) {
+    showNotification('Error', 'Salary must be a positive number', 'error');
+
+    return;
+  }
+
   const formattedSalary = `$${salary.toLocaleString('en-US')}`;
 
   const newRow = document.createElement('tr');
